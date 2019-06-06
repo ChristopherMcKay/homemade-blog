@@ -1,0 +1,284 @@
+* {
+    border-radius: 5px;
+}
+
+body {
+    background-color: #DDD;
+    color: #333;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile First: 1-column layout */
+#container {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-template-areas:
+        "nav burger"
+        "header header"
+        "main main"
+        "aside aside"
+        "footer footer";
+    grid-gap: 10px;
+    background-color: #BBB;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #888;
+    min-height: 70vh;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    color: azure;
+    height: 30vh;
+}
+
+nav {
+    grid-area: nav;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EEE;
+    color: #555;
+    margin: 0;
+    width: 100%;
+}
+
+/*** REMOVE THIS ****
+#mobile-nav {
+    display: none;
+}
+/********************/
+
+#mobile-nav, #mobile-nav ul {
+    flex-direction: column;
+    padding: 0.2em;
+}
+
+#mobile-nav li {
+  margin: 0.3em;
+}
+
+#mobile-nav li, #mobile-nav a {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+#mobile-nav a {
+  line-height: 1.6;
+  transition: background-color 0.25s linear;
+}
+
+#mobile-nav li a:hover {
+  background-color: #BBB;
+  color: white;
+}
+
+#desktop-nav {
+    display: none;
+    position: fixed;
+    height: 50px;
+}
+
+#burger {
+    grid-area: burger;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #555;
+    padding: 5px 3px 3px 8px;
+    width: 25px;
+    height: 25px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+}
+
+#burger:hover {
+    background-color: #CDC;
+    color: #EFE;
+}
+
+.search button,
+.search input {
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    padding: 0 8px;
+    vertical-align: middle;
+}
+/* make room inside the input for the search icon */
+.search input {
+    padding-right: 1.7em;
+    border: #eeeeff 1px solid;
+}
+.search input:focus {
+    outline-color: #ff7441;
+}
+/* put the search icon inside the input, no button style */
+.search button {
+    background-color: transparent;
+    border-style: none;
+    position: relative;
+    right: 2.2em;
+    color: #ff7441;
+}
+
+aside {
+    grid-area: aside;
+    background-color: #EFE;
+    padding: 10px;
+    min-height: 20vh;
+}
+
+main {
+    grid-area: main;
+    background-color: #EEF;
+    padding: 10px;
+    min-height: 20vh;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #FEE;
+    padding: 10px;
+    min-height: 10vh;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav li, nav a {
+    margin: 0;
+    padding: 0;
+}
+
+ul a {
+    text-decoration: none;  
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+textarea {
+    padding: 10px;
+    width: 100%;
+    resize: none;
+}
+
+#save-blog-btn {
+    margin: 5px auto;
+    padding: 5px 15px;
+    background-color: #EFE;
+    width: 50%;
+}
+
+article hr {
+  clear: both;
+}
+
+/* Media Query (2-col for desktop/laptop) */
+/* min-width is breakpoint for switching */
+@media (min-width:800px) {
+    
+    /* anything that changes for 2-col */
+    #container {
+        grid-template-columns: 5fr 2fr;
+        grid-template-areas: 
+        "header header"
+        "main aside"
+        "footer footer";
+    }
+    
+    /* HIDE MOBILE NAV N BURGER */
+    #mobile-nav, #burger, #search-form {
+        display: none !important; /* add !important to override the js toggle that shows the mobile nav -- in 2-col desktop view we want to hid the mobile nav */
+    }
+    
+    /* Bring back desktop nav */
+    #desktop-nav {
+        display: flex;
+    }
+    
+    body {
+        padding-top: 50px;
+    }
+    
+} /* Close Media Query */
+
+/* Blog Format Bar */
+#blog-format-bar {
+    background-color: peachpuff;
+    padding: 2%;
+    width: 100%;
+    margin-bottom: 0;
+    border: 1px solid #555;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#blog-format-bar button {
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    margin: 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Make the blogEntry textarea and preview-view look exactly the same */
+
+#blogTitle, #blogBlurb {
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 1rem;
+}
+
+#preview-div, #blogEntry {
+    width: 100%;
+    padding: 2%;
+    margin: 0;
+    min-height: 400px;
+    border: 1px solid #555;
+    border-radius: 0;
+    background-color: #EEE;
+}
+
+#blogEntry {
+  font-size: 2.4em;
+}
+
+select {
+    height: 25px;
+}
+
+article #blogEntry {
+  width: auto;
+}
+
+#thumbs-div {
+  height: 75px;
+  padding: 5px 5px 10px;
+  margin: 5px 0 10px 0;
+  background-color: #ddd;
+  border: 2px #888 solid;
+  border-radius: 5px;
+  white-space: nowrap;
+  max-width: 350px;
+  overflow-x: scroll;
+}

@@ -1,0 +1,42 @@
+.popup {
+  /* full screen ap div */
+  position: absolute;
+  z-index: 2; /* place it above other positioned elements */
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  /* center the forms side by side */
+  display: none; /* hide it by default, display it in js */
+  align-items: center;
+  justify-content: center;
+  
+  /* overlay background */
+  background-color: #ff8100b5;
+}
+
+.popup div {
+  margin: 2em;
+  background-color: beige;
+  border: 3px solid brown;
+  padding: 2em;
+}
+
+.popup button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  font-size: 1.3em;
+}
+
+.error {
+  color: red;
+}
+
+/* the popup when it is visible, because the style attribute contains the string 'flex' */
+.popup[style*="flex"] ~ nav, /* nav which follows the popup */
+.popup[style*="flex"] ~ #container {
+  filter: blur(2px);  
+}
